@@ -1,0 +1,157 @@
+Subject Selection
+.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E91EBD"
+    android:padding="30dp"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="171dp"
+        android:background="#E91EBD"
+        android:padding="20dp">
+
+    </RelativeLayout>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Subject"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="31dp"
+            tools:layout_editor_absoluteY="96dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="process"
+        android:text="Submit"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="162dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+.java
+package com.example.connectfirebase;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class MainActivity extends AppCompatActivity {
+    EditText t1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toast.makeText( MainActivity.this,"firebase conection successful",Toast.LENGTH_LONG).show();
+    }
+
+    public void process(View view) {
+        t1=(EditText)findViewById(R.id.t1);
+
+        FirebaseDatabase db =FirebaseDatabase.getInstance();
+        DatabaseReference root =db.getReference("Subject_Selection");
+        root.setValue (t1.getText().toString());
+        t1.setText("");
+        Toast.makeText(getApplicationContext(),"Inserted",Toast.LENGTH_LONG).show();
+    }
+}
+
+Teacher Selection
+.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E91EBD"
+    android:padding="30dp"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="171dp"
+        android:background="#E91EBD"
+        android:padding="20dp">
+
+    </RelativeLayout>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Teacher Name"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="31dp"
+            tools:layout_editor_absoluteY="96dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="process"
+        android:text="Submit"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="162dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+.java
+package com.example.connectfirebase;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class MainActivity extends AppCompatActivity {
+    EditText t1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toast.makeText( MainActivity.this,"firebase conection successful",Toast.LENGTH_LONG).show();
+    }
+
+    public void process(View view) {
+        t1=(EditText)findViewById(R.id.t1);
+
+        FirebaseDatabase db =FirebaseDatabase.getInstance();
+        DatabaseReference root =db.getReference("Teacher_Selection");
+        root.setValue (t1.getText().toString());
+        t1.setText("");
+        Toast.makeText(getApplicationContext(),"Inserted",Toast.LENGTH_LONG).show();
+    }
+}
